@@ -6,6 +6,16 @@
 #include <SDL2/SDL_ttf.h>
 #include "game.h"
 
+static void _destroy(Game *this)
+{
+    if (NULL != this)
+    {
+        SDL_DestroyRenderer(this->renderer);
+        SDL_DestroyWindow(this->window);
+        free(this);
+    }
+}
+
 static int _loop(Game *this)
 {
     while (!this->quit)
@@ -34,6 +44,7 @@ Game *CREATE_GAME(SDL_Renderer *renderer, SDL_Window *window)
     this->quit = 0;
 
     this->loop = _loop;
+    this->destroy = _destroy;
 
     return this;
 }

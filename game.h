@@ -3,6 +3,7 @@
 
 typedef struct _Game
 {
+    void (*destroy)(struct _Game *this);
     int (*loop)(struct _Game *this);
     SDL_Renderer * renderer;
     SDL_Window * window;

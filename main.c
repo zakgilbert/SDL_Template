@@ -22,9 +22,8 @@ int main( int argc, char * argv[])
     create_Window_and_Renderer( &renderer, &window, "GAME" );
     Game * game = CREATE_GAME(renderer, window);
     game->loop(game);
+    game->destroy(game);
 
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
     SDL_Quit(); 
     return 0;
 }
